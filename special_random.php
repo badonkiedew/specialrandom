@@ -15,11 +15,6 @@
     margin:0 0 -300px 0;
 }
 </style>
-
-
-
-
-
 <?php
  
     
@@ -31,13 +26,14 @@
 
     $arr = array(1, 2, 3, 4);
 foreach ($arr as &$columns) {
-    $wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
     $columns = $wikiurl;
+$randomurl = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
+    $wikiurl = trim($randomurl,"location :");
+    
 }
-// $arr is now array(2, 4, 6, 8)
+// $arr is now filled
     
 foreach ($arr as &$wikiurl) {
-    $wikiurl = trim($wikiroll,"location :");
     print "<iframe class=preview src=$wikiurl></iframe>";
 }    
     //unset($value); // break the reference with the last element
@@ -50,5 +46,3 @@ foreach ($arr as &$wikiurl) {
 
 
 ?>
-
-
