@@ -21,8 +21,16 @@ curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -d11-
 convert to variable (PHP)
 <?
 
-$wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -d11-');
-print $wikiroll;
+$wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
 
+// cut/multi-pipe error workaround
+
+$wikiurl = trim($wikiroll,"location :");
+echo "<iframe class=preview src=$wikiurl></iframe>";
 ?>
+
+
+
+
+
 
