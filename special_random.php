@@ -29,13 +29,11 @@ foreach ($arr as &$columns) {
     $columns = $wikiurl;
 $randomurl = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
     $wikiurl = trim($randomurl,"location :");
-    
+    print "<iframe class=preview src=$wikiurl></iframe>";
 }
 // $arr is now filled
     
-foreach ($arr as &$wikiurl) {
-    print "<iframe class=preview src=$wikiurl></iframe>";
-}    
+
     //unset($value); // break the reference with the last element
 
 
