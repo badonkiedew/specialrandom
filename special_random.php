@@ -21,18 +21,34 @@
 
 
 <?php
+ 
+    
+
+    
+    
 //print "test";
 //echo phpinfo();
-/*
-curl -I https://en.wikipedia.org/wiki/Special:Random | grep location
-*/
-$wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
+
+    $arr = array(1, 2, 3, 4);
+foreach ($arr as &$columns) {
+    $wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
+    $columns = $wikiurl;
+}
+// $arr is now array(2, 4, 6, 8)
+    
+foreach ($arr as &$wikiurl) {
+    $wikiurl = trim($wikiroll,"location :");
+    print "<iframe class=preview src=$wikiurl></iframe>";
+}    
+    //unset($value); // break the reference with the last element
 
 
-$wikiurl = trim($wikiroll,"location :");
 
 
-print "<iframe class=preview src=$wikiurl></iframe>";
+
+
+
+
 ?>
 
 
