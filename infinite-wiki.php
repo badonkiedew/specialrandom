@@ -32,7 +32,10 @@ color: #9932cc;
 
 
 	<?php
-	 
+	include("conn.php");
+
+		$timestamp = time();
+		print $timestamp; 
 	    
 
 	    
@@ -45,6 +48,22 @@ color: #9932cc;
 	    $columns = $wikiurl;
 	$randomurl = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
 	    $wikiurl = trim($randomurl,"location :");
+	$urlin = mysqli_query($mysqli, "INSERT INTO urls VALUES('$timestamp','$wikiurl')");
+	$urlout = mysqli_query($mysqli, "SELECT wikinum, url FROM randomwiki where(wikinum ='$timestamp' && url ='$wikiurl')");
+		$timestamp = "";
+	if ($result = $mysqli->query($urlout)) {
+				
+			   
+	    while ($row = $result->mysqli_fetch_array()) {
+
+				$raw_num = $row[wikinum];
+				$raw_wiki = $row[url];
+		print $raw_num;
+		print $raw_wiki;
+			}
+			$result->close();
+				}
+		
 	    print "<a class=visiturl href=$wikiurl><iframe scrolling=no align=middle class=preview src=$wikiurl></iframe>$wikiurl</a>";
 
 }
@@ -61,7 +80,3 @@ color: #9932cc;
 
 	?>
 				</center>
-					
-
-
-
