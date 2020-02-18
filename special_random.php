@@ -1,46 +1,46 @@
-<html>
-
-<head>
-
-<style>
-.preview {
-    width:600px; height:400px;
-    -webkit-transform:scale(.25);
-    -ms-transform:scale(.5);
-    transform:scale(.5);
-    -webkit-transform-origin:0 0; 
-    -ms-transform-origin:0 0; 
-    transform-origin:0 0; 
-    border:4px solid blue;
-    margin:0 0 -300px 0;
-}
-</style>
-<?php
  
-    
 
-    
-    
-//print "test";
-//echo phpinfo();
+ <link href="img_display.css" rel="stylesheet">  
+ 
+<div style="flex-grid img-column">
 
-    $arr = array(1, 2, 3, 4);
-foreach ($arr as &$columns) {
-    $columns = $wikiurl;
-$randomurl = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
-    $wikiurl = trim($randomurl,"location :");
-    print "<iframe class=preview src=$wikiurl></iframe>";
-}
-// $arr is now filled
-    
+<?php
+            require_once ('conn.php');
+          
+            $sqlQuery = "SELECT * FROM images order by rand() limit 26";
+            
+		$result = mysqli_query($mysqli, $sqlQuery);
+        		
+	            while ($row = mysqli_fetch_assoc($result)) {
+		
+				$timestamp = $row['idnumber']; 
+				$img_url = $row['imgurl'];
+				$urlout = mysqli_query($mysqli, "SELECT * FROM urls where(wikinum ='$timestamp')");
+							
+				$select_row=mysqli_fetch_array($urlout);
+				$raw_num = $select_row["wikinum"];
+				$raw_wiki = $select_row["url"];
+		$img_delete = "DELETE FROM images where (idnumber ='$timestamp')";
+		$entry_delete = "DELETE FROM urls where (wikinum ='$timestamp')";
+	$delete_entry = mysqli_query($mysqli, $entry_delete);
+	$delete_images = mysqli_query($mysqli, $img_delete);
+	          $trim_url = substr("$raw_wiki", 30);
+			 ?>
 
-    //unset($value); // break the reference with the last element
+      	
 
+					
+	<a title="<?php echo $trim_url; ?>" href="../keepers.php?idn=<?php echo $raw_num; ?>&wikidest=<?php echo $raw_wiki; ?>" class=manufacture valign=center style="background-image:url(<?php echo $img_url; ?>);background-size:contain;border:0px;">
+		<div class="maker">
+					
+					</div>
+		
+		</a>
+		
+        
+        <?php
+	unset($timestamp);
+            }
 
-
-
-
-
-
-
-?>
+		
+        ?>
