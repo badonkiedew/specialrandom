@@ -18,16 +18,6 @@ remove location header/pipe into specified text document
 curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -d11- >> special-random.txt
 
 
-convert to variable (PHP)
-<?
-
-$wikiroll = exec('curl -I https://en.wikipedia.org/wiki/Special:Random | grep location');
-
-// cut/multi-pipe error workaround
-
-$wikiurl = trim($wikiroll,"location :");
-echo "<iframe class=preview src=$wikiurl></iframe>";
-?>
 
 
 
