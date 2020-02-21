@@ -10,12 +10,12 @@ curl -I https://en.wikipedia.org/wiki/Special:Random | grep location >> special-
 
 remove location header
 
-curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -d11-
+curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -b 11-
 
 
 remove location header/pipe into specified text document
 
-curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -d11- >> special-random.txt
+curl -I https://en.wikipedia.org/wiki/Special:Random | grep location | cut -b 11- >> special-random.txt
 
 
 
