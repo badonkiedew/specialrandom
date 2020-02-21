@@ -1,0 +1,76 @@
+
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+@import url("https://fonts.googleapis.com/css?family=Vast+Shadow");
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+		
+
+
+.flex-grid {
+overflow:auto;
+display:  block;
+border-radius: 5px;
+border: 1px solid silver;
+background-color: darkgreen;
+height: -webkit-fill-available;
+}
+
+.top-menu{
+margin: 0;
+position: absolute;
+margin-top: 50px;
+margin-bottom: 40%;
+left: 1%;
+top:2%;
+		}
+.manufacture {
+	border: 1px solid silver;
+    display: inline-flex;
+    position: inherit;
+    width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-delay: 300ms;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: darkblue;
+    margin: 2px;
+    background-color: transparent;
+    background-blend-mode: multiply;
+    opacity: 1;
+    text-decoration: none;
+    margin: 8px;
+}
+.topdate{
+	height: fit-content;
+    background: black;
+	font-size: small;
+    text-shadow: 1px 1px #483838;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    text-decoration: none;
+    opacity: 1;
+    top: 2%;
+    left: 2%;
+    font-family: 'Comfortaa', cursive;
+}
+.botart{
+	height: fit-content;
+    background: black;
+	font-size: small;
+	text-align: center;
+    text-shadow: 0px 0px #483838;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    text-decoration: none;
+    opacity: 1;
+    bottom: -100%;
+    right: 2%;
+    font-family: 'Comfortaa', cursive;
+}
+
+
